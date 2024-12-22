@@ -1,0 +1,38 @@
+<form [formGroup]="formgroup" (ngSubmit)="onsubmit()">
+
+    <input type="text" class="form-control" placeholder="enter user name" name="username" formControlName="username">
+    <div *ngIf="formgroup.get('username')?.invalid && formgroup.get('phonenumber')?.touched">
+        <small *ngIf="formgroup.get('username')?.errors?.['required']">username is required</small>
+        <small *ngIf="formgroup.get('username')?.errors?.['minLength']">username must atleast required 6
+            numbers</small>
+
+    </div>
+
+
+    <input type="email" class="form-control" placeholder="enter emial" name="email" formControlName="email">
+    <div *ngIf="formgroup.get('email')?.invalid && formgroup.get('phonenumber')?.touched">
+        <small *ngIf="formgroup.get('email')?.errors?.['required']">email is required</small>
+        <small *ngIf="formgroup.get('email')?.errors?.['patterns']">email must atleast required 6
+            numbers</small>
+
+    </div>
+
+    <input type="password" class="form-control" placeholder="enter password" name="password" formControlName="password">
+    <div *ngIf="formgroup.get('password')?.invalid && formgroup.get('phonenumber')?.touched">
+        <small *ngIf="formgroup.get('password')?.errors?.['required']">password required</small>
+        <small *ngIf="formgroup.get('password')?.errors?.['minLength']">password must atleast required 6
+            numbers</small>
+        <small *ngIf="formgroup.get('password')?.errors?.['maxLength']">password count has exceeded</small>
+    </div>
+
+    <input type="number" class="form-control" placeholder="enter phone number" name="phone number"
+        formControlName="phonenumber">
+    <div *ngIf="formgroup.get('phonenumber')?.invalid && formgroup.get('phonenumber')?.touched">
+        <small *ngIf="formgroup.get('phonenumber')?.errors?.['required']">phone nuber is required</small>
+        <small *ngIf="formgroup.get('phonenumber')?.errors?.['minLength']">phone number must atleast required 6
+            numbers</small>
+        <small *ngIf="formgroup.get('phonenumber')?.errors?.['maxLength']">number count has exceeded</small>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="formgroup.invalid">submit</button>
+</form>
